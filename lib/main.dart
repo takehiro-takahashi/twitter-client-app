@@ -31,6 +31,33 @@ class _MyHomePageState extends State<MyHomePage> {
       body: new Center(
         child: Text('Hello World'),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 0,
+          onTap: _onTaped,
+          type: BottomNavigationBarType.fixed,
+          items: [
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.home, color: Colors.blue,),
+              title: new Text(''),
+            ),
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.search, color: Colors.blue,),
+              title: new Text(''),
+            ),
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.notifications, color: Colors.blue,),
+              title: new Text(''),
+            ),
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.mail, color: Colors.blue,),
+              title: new Text(''),
+            ),
+          ]
+      ),
     );
+  }
+
+  _onTaped(int index) {
+    print(index);
   }
 }
