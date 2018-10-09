@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:twitter_pp/pages/Home.dart';
+import 'package:twitter_pp/pages/KeyWord.dart';
+import 'package:twitter_pp/pages/Notifications.dart';
+import 'package:twitter_pp/pages/Message.dart';
 
 void main() => runApp(new MyApp());
 
@@ -8,7 +12,8 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Flutter Demo',
       theme: new ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.white,
+        accentColor: Colors.blue
       ),
       home: new MyHomePage(),
     );
@@ -22,6 +27,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  int currentIndex = 0;
+
+  List tabItemWidget = [
+    Home(),
+    KeyWord(),
+    Notifications(),
+    Message(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -29,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: new Text('ホーム'),
       ),
       body: new Center(
-        child: Text('Hello World'),
+        child: tabItemWidget[currentIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: 0,
@@ -37,20 +51,20 @@ class _MyHomePageState extends State<MyHomePage> {
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
-              icon: new Icon(Icons.home, color: Colors.blue,),
-              title: new Text(''),
+              icon: Icon(Icons.home, color: Colors.blue,),
+              title: Text(''),
             ),
             BottomNavigationBarItem(
-              icon: new Icon(Icons.search, color: Colors.blue,),
-              title: new Text(''),
+              icon: Icon(Icons.search, color: Colors.blue,),
+              title: Text(''),
             ),
             BottomNavigationBarItem(
-              icon: new Icon(Icons.notifications, color: Colors.blue,),
-              title: new Text(''),
+              icon: Icon(Icons.notifications, color: Colors.blue,),
+              title: Text(''),
             ),
             BottomNavigationBarItem(
-              icon: new Icon(Icons.mail, color: Colors.blue,),
-              title: new Text(''),
+              icon: Icon(Icons.mail, color: Colors.blue,),
+              title: Text(''),
             ),
           ]
       ),
@@ -58,6 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _onTaped(int index) {
-    print(index);
+    setState(() {
+      currentIndex = index;
+    });
   }
 }
