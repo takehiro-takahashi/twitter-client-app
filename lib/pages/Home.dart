@@ -15,15 +15,67 @@ class _HomeState extends State<Home> {
             return InkWell(
               onTap: (){},
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   ListTile(
-                    title: Text("Index ユーザー $index"),
+                    title: Row(
+                      children: <Widget>[
+                        Text("Index ユーザー $index"),
+                        SizedBox(width: 70.0,),
+                        Text(
+                          "8時間前",
+                          style: TextStyle(fontSize: 13.0, color: Colors.grey),
+                        )
+                      ],
+                    ),
                     leading: Image.asset(
                       "assets/icon$index.png",
                       width: 30.0,
                       height: 30.0,
                     ),
-                    subtitle: Text("こんにちはTwitterへ！！\nこちらはTwitterのクローンを作成しています"),
+                    subtitle: Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          SizedBox(height: 5.0,),
+                          Text("こんにちはTwitterへ！！\nこちらはTwitterのクローンを作成しています"),
+                          SizedBox(height: 5.0,),
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.comment,
+                                size: 15.0,
+                                color: Colors.grey,
+                              ),
+                              Text(index.toString()),
+                              SizedBox(width: 30.0,),
+                              Icon(
+                                Icons.repeat,
+                                size: 15.0,
+                                color: Colors.grey,
+                              ),
+                              Text(index.toString()),
+                              SizedBox(width: 30.0,),
+                              Icon(
+                                Icons.favorite,
+                                size: 15.0,
+                                color: Colors.grey,
+                              ),
+                              Text(index.toString()),
+                              SizedBox(width: 30.0,),
+                              Icon(
+                                Icons.share,
+                                size: 15.0,
+                                color: Colors.grey,
+                              ),
+                              Text(index.toString()),
+                              SizedBox(width: 30.0,),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
                   ),
                   SizedBox(height: 20.0,),
                   Divider(height: 5.0,),
