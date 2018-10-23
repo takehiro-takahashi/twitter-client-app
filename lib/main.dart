@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:twitter_pp/pages/Home.dart';
 import 'package:twitter_pp/pages/KeyWord.dart';
 import 'package:twitter_pp/pages/Notifications.dart';
@@ -9,6 +10,11 @@ void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      // portrait only setting
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return new MaterialApp(
       title: 'Flutter Demo',
       theme: new ThemeData(
