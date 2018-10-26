@@ -42,11 +42,73 @@ class _MyHomePageState extends State<MyHomePage> {
     Message(),
   ];
 
+  List icons = [
+    Icons.add,
+    Icons.person_add,
+    Icons.settings,
+    Icons.mail
+  ];
+
+  List titles = [
+    "ホーム",
+    "キーワード",
+    "通知",
+    "メッセージ"
+  ];
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('ホーム'),
+      appBar: currentIndex != 1
+        ? new AppBar(
+        title: new Text(titles[currentIndex]),
+        actions: <Widget>[
+          new Container(
+            margin: EdgeInsets.only(right: 10.0),
+            child: Icon(icons[currentIndex], color: Colors.blue,),
+          )
+        ],
+        leading: Container(
+          margin: EdgeInsets.all(10.0),
+          width: 10.0,
+          height: 10.0,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            image: DecorationImage(
+                image: new NetworkImage("http://d2dcan0armyq93.cloudfront.net/photo/odai/600/915409eb62fa0ac15f11fa450e085a6e_600.jpg"),
+              fit: BoxFit.cover
+            )
+          )
+        )
+      )
+      : AppBar(
+        title: TextFormField(
+          decoration: InputDecoration(
+            labelText: 'キーワード検索',
+          ),
+        ),
+        centerTitle: true,
+        actions: <Widget>[
+          new Container(
+            margin: EdgeInsets.only(right: 10.0),
+            child: Icon(
+              icons[currentIndex],
+              color: Colors.blue,
+            ),
+          )
+        ],
+        leading: Container(
+          margin: EdgeInsets.all(10.0),
+          width: 10.0,
+          height: 10.0,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            image: DecorationImage(
+                image: new NetworkImage("http://d2dcan0armyq93.cloudfront.net/photo/odai/600/915409eb62fa0ac15f11fa450e085a6e_600.jpg"),
+              fit: BoxFit.cover
+            )
+          )
+        )
       ),
       body: new Center(
         child: tabItemWidget[currentIndex],
